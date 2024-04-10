@@ -30,7 +30,7 @@ sumaDistintos x y z | x /= y && x /= z && y /= z = x + y + z
                     | x /= y && x /= z && y == z = x + y
                     | x == y && x == z && y == z = 0
 
-ultimoDigito :: Int -> Int
+ultimoDigito :: Integer -> Integer
 ultimoDigito x = rem x 10
 
 digitoDecenas :: Integer -> Integer
@@ -52,4 +52,22 @@ posPrimerPar (x, y, z) | even x = 1
 bisiesto1 :: Int -> Bool
 bisiesto1 x | mod x 100 == 0 = mod x 400 == 0
             | otherwise = mod x 4 == 0
+
+distanciaManhattan :: (Float, Float, Float) -> (Float, Float, Float) -> Float
+distanciaManhattan (x1, y1, z1) (x2, y2, z2) = abs (x1 - x2) + abs (y1 - y2) + abs (z1 - z2)
+
+absoluto :: Float -> Float
+absoluto n | n < 0 = -n
+           | otherwise = n
+
+sumaUltimosDigitos :: Integer -> Integer -> Integer
+sumaUltimosDigitos x  y | ultimoDigito x + digitoDecenas x > ultimoDigito y + digitoDecenas y = 1
+                        | ultimoDigito x + digitoDecenas x < ultimoDigito y + digitoDecenas y = -1
+                        | otherwise = 0
+
+f4 :: Float -> Float -> Float
+f4 x y = (x+y)/2
+
+f5 :: (Float, Float) -> Float
+f5 (x, y) = (x+y)/2
 
