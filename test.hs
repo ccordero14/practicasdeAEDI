@@ -1,4 +1,3 @@
-import System.Win32 (xBUTTON1)
 doubleMe x = x + x
 
 f :: Int -> Int
@@ -14,4 +13,6 @@ g 131 = 1
 h :: Int -> Int
 h = f . g
     
+k :: Int -> Int
+k = g . f
 
