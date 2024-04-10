@@ -30,3 +30,6 @@ sumaDistintos x y z | x /= y && x /= z && y /= z = x + y + z
 
 ultimoDigito :: Int -> Int
 ultimoDigito x = rem x 10
+
+digitoDecenas :: Integer -> Integer
+digitoDecenas x  = mod (div x 10) 10
