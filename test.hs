@@ -71,3 +71,4 @@ f4 x y = (x+y)/2
 f5 :: (Float, Float) -> Float
 f5 (x, y) = (x+y)/2
 
+--entendi varias cosas yay
