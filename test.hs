@@ -27,3 +27,6 @@ sumaDistintos x y z | x /= y && x /= z && y /= z = x + y + z
                     | x /= y && x == z && y /= z = x + y
                     | x /= y && x /= z && y == z = x + y
                     | x == y && x == z && y == z = 0
+
+ultimoDigito :: Int -> Int
+ultimoDigito x = rem x 10
