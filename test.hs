@@ -37,3 +37,5 @@ digitoDecenas x  = mod (div x 10) 10
 todoMenor :: [Int] -> [Int] -> Bool
 todoMenor [x , y] [z , d] | x < z && y < d = True
                           | otherwise = False
+
+--WE'RE DONEEEEEEEEE FUCK YEAH
