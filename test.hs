@@ -16,3 +16,9 @@ h = f . g
 k :: Int -> Int
 k = g . f
 
+maximo3 :: Int -> Int -> Int -> Int 
+maximo3 x y z | x > y && x > z = x
+              | y > z && y > x = y
+              | z > y && z > x = z
+
+
