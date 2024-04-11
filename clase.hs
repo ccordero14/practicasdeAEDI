@@ -1,9 +1,9 @@
 --clase
 
-todoMenor :: (Int, Int) -> (Int, Int) -> Bool  
+todoMenor :: (Int, Int) -> (Int, Int) -> Bool
 todoMenor (a, b) (c, d) | a < c && b < d = True
                         | otherwise = False
-                    
+
 primero :: (Int, Int, Int) -> Int
 primero  (x, y, z) = x
 
@@ -14,9 +14,9 @@ tercero :: (Int, Int, Int) -> Int
 tercero  (x, y, z) = z
 
 posPrimerPar :: (Int, Int, Int) -> Int
-posPrimerPar (x, y, z) | mod x 2 == 0 = 0
-                       | mod y 2 == 0 = 1
-                       | mod z 2 == 0 = 2
+posPrimerPar (x, y, z) | even x = 0
+                       | even y = 1
+                       | even z = 2
                        | otherwise = 4
 
 bisiesto :: Integer -> Bool
@@ -24,13 +24,13 @@ bisiesto x | mod x 100 == 0 = mod x 400 == 0
            | otherwise = mod x 4 == 0
 
 distanciaManhattan :: (Float, Float, Float) -> (Float, Float, Float) -> Float
-distanciaManhattan (a, b, c) (d, e, f) = abs (a - d) + abs (b - e) + abs (c - f) 
+distanciaManhattan (a, b, c) (d, e, f) = abs (a - d) + abs (b - e) + abs (c - f)
 
 ultimoDigito :: Integer -> Integer
-ultimoDigito x = rem x 10
+ultimoDigito x = mod (absoluto x) 10
 
 digitoDecenas :: Integer -> Integer
-digitoDecenas x  = mod (div x 10) 10
+digitoDecenas x  =  mod (div (absoluto x) 10) 10
 
 comparar :: Integer -> Integer -> Integer
 comparar x y | (ultimoDigito x - digitoDecenas x) < (ultimoDigito y - digitoDecenas y) = 1
@@ -53,13 +53,13 @@ maximoAbsoluto x y | absoluto x > absoluto y = absoluto x
 
 algunoes0 :: Float -> Float -> Bool
 algunoes0 x y | x == 0 && y /= 0 = True
-              | x /= 0 && y == 0 = True 
+              | x /= 0 && y == 0 = True
               | x == 0 && y == 0 = True
               | otherwise = False
 
 algunoes01 :: Float -> Float -> Bool
 algunoes01 x y | x == 0 = True
-              | y == 0 = True 
+              | y == 0 = True
               | otherwise = False
 
 ambosson0 :: Float -> Float -> Bool
@@ -70,12 +70,36 @@ mismoIntervalo :: Float -> Float -> Bool
 mismoIntervalo x y | x <= 3 && y <= 3 = True
                    | x > 3 && x <=7 && y > 3 && y <= 7 = True
                    | x > 7 && y > 7 = True
-                   | otherwise = False 
+                   | otherwise = False
 
 esMultiploDe :: Integer -> Integer -> Bool
 esMultiploDe x y | mod x y == 0 = True
                  | otherwise = False
 
 estanRelacionados :: Integer ->Integer ->Bool
-estanRelacionados x y | 
+estanRelacionados x y | mod x y == 0 = True
+                      | otherwise = False
 
+prodInt :: (Int, Int)-> (Int, Int) -> Int
+prodInt (a, b) (c, d) = (a * c) + (b * d)
+
+distanciaPuntos :: (Float, Float) -> (Float, Float) -> Float
+distanciaPuntos (x1, y1) (x2, y2) = sqrt ((x1 - x2)^2 +(y1 - y2)^2)
+
+sumaTerna :: (Int, Int, Int) -> Int
+sumaTerna (x, y, z) = x + y + z
+
+sumarSoloMultiplos :: (Int, Int, Int) -> Int -> Int
+sumarSoloMultiplos (a, b, c) d | mod a d == 0 && mod b d == 0 && mod c d == 0 = a + b + c + d
+                               | mod a d == 0 && mod b d == 0 = a + b + d
+                               | mod a d == 0 && mod c d == 0 = a + c + d
+                               | mod b d == 0 && mod c d == 0 = b + c + d
+                               | mod a d == 0 = a + d
+                               | mod b d == 0 = b + d
+                               | mod c d == 0 = c + d
+
+crearPar :: t -> t -> (t, t)
+crearPar a b = (a, b) 
+
+invertir :: (t, t) -> (t, t)
+invertir (a, b) = (b, a)
