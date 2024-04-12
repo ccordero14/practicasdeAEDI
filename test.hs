@@ -1,22 +1,5 @@
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-{-# HLINT ignore "Redundant ==" #-}
 doubleMe x = x + x
 
-f :: Int -> Int
-f 1 = 8
-f 4 = 131
-f 16 = 16
-
-g :: Int -> Int
-g 8 = 16
-g 16 = 4
-g 131 = 1
-
-h :: Int -> Int
-h = f . g
-
-k :: Int -> Int
-k = g . f
 
 maximo3 :: Int -> Int -> Int -> Int
 maximo3 x y z | x > y && x > z = x
@@ -72,3 +55,5 @@ f5 :: (Float, Float) -> Float
 f5 (x, y) = (x+y)/2
 
 --entendi varias cosas yay
+f a = (a * 5) 7
+
