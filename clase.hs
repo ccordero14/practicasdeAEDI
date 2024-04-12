@@ -1,19 +1,19 @@
 --clase
 
-todoMenor :: (Int, Int) -> (Int, Int) -> Bool
+todoMenor :: (Integer, Integer) -> (Integer, Integer) -> Bool
 todoMenor (a, b) (c, d) | a < c && b < d = True
                         | otherwise = False
 
-primero :: (Int, Int, Int) -> Int
+primero :: (Integer, Integer, Integer) -> Integer
 primero  (x, y, z) = x
 
-segundo :: (Int, Int, Int) -> Int
+segundo :: (Integer, Integer, Integer) -> Integer
 segundo  (x, y, z) = y
 
-tercero :: (Int, Int, Int) -> Int
+tercero :: (Integer, Integer, Integer) -> Integer
 tercero  (x, y, z) = z
 
-posPrimerPar :: (Int, Int, Int) -> Int
+posPrimerPar :: (Integer, Integer, Integer) -> Integer
 posPrimerPar (x, y, z) | even x = 0
                        | even y = 1
                        | even z = 2
@@ -80,16 +80,22 @@ estanRelacionados :: Integer ->Integer ->Bool
 estanRelacionados x y | mod x y == 0 = True
                       | otherwise = False
 
-prodInt :: (Int, Int)-> (Int, Int) -> Int
+prodInt :: (Integer, Integer)-> (Integer, Integer) -> Integer
 prodInt (a, b) (c, d) = (a * c) + (b * d)
 
 distanciaPuntos :: (Float, Float) -> (Float, Float) -> Float
 distanciaPuntos (x1, y1) (x2, y2) = sqrt ((x1 - x2)^2 +(y1 - y2)^2)
 
-sumaTerna :: (Int, Int, Int) -> Int
+sumaTerna :: (Integer, Integer, Integer) -> Integer
 sumaTerna (x, y, z) = x + y + z
 
-sumarSoloMultiplos :: (Int, Int, Int) -> Int -> Int
+crearPar :: t -> t -> (t, t)
+crearPar a b = (a, b)
+
+invertir :: (t, t) -> (t, t)
+invertir (a, b) = (b, a)
+
+sumarSoloMultiplos :: (Integer, Integer, Integer) -> Integer -> Integer
 sumarSoloMultiplos (a, b, c) d | mod a d == 0 && mod b d == 0 && mod c d == 0 = a + b + c + d
                                | mod a d == 0 && mod b d == 0 = a + b + d
                                | mod a d == 0 && mod c d == 0 = a + c + d
@@ -98,8 +104,17 @@ sumarSoloMultiplos (a, b, c) d | mod a d == 0 && mod b d == 0 && mod c d == 0 = 
                                | mod b d == 0 = b + d
                                | mod c d == 0 = c + d
 
-crearPar :: t -> t -> (t, t)
-crearPar a b = (a, b) 
 
-invertir :: (t, t) -> (t, t)
-invertir (a, b) = (b, a)
+f :: Integer -> Integer
+f x | x <= 7 = x ^ 2
+    | x > 7 = (x * 3) + 1
+
+
+todosMenores :: (Integer, Integer, Integer) -> Bool
+todosMenores (x, y, z) | f x < g x && f y < g y && f z < g z = True
+                       | otherwise = False
+
+
+g :: Integer -> Integer
+g x | mod x 2 == 0 = div x 2
+    | otherwise = (x * 3) + 1
