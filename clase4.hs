@@ -1,0 +1,32 @@
+--guia4 c
+
+fibonacci :: Integer -> Integer
+fibonacci x | x == 0 = 0
+            | x == 1 = 1
+            | otherwise = fibonacci (x - 1) + fibonacci (x - 2)
+
+parteEntera :: Float -> Integer
+parteEntera x = truncate x
+
+esDivisible :: Integer -> Integer -> Bool
+esDivisible x y | x - y == 0 = True
+                | x - y < 0  = False
+                |otherwise = esDivisible(x - y) y 
+
+sumaImpares :: Integer -> Integer
+sumaImpares x | x == 0 = 0
+              | x == 1 = 1
+              | otherwise = sumaImpares (x-1) + (x * 2) - 1
+
+medioFact :: Integer -> Integer
+medioFact x | x == 0 = 1
+            | x == 1 = 1
+            | x == 2 = 2
+            | otherwise = x * medioFact (x - 2)
+
+sumaDigitos :: Integer -> Integer
+sumaDigitos x | x < 10 = x
+              | otherwise = mod x 10 + sumaDigitos (div x 10)
+
+ 
+
