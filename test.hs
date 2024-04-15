@@ -57,3 +57,16 @@ f5 (x, y) = (x+y)/2
 --entendi varias cosas yay
 f a = (a * 5) 7
 
+fibonacci :: Integer -> Integer
+fibonacci n | n == 0 = 0
+            | n == 1 = 1
+            | otherwise = fibonacci (n - 1) + fibonacci (n - 2)
+
+parteEntera :: Float -> Integer
+parteEntera = truncate
+
+esDivisible :: Integer -> Integer -> Bool
+esDivisible x y | x * (y ^ (-1)) == 0 = True
+                | otherwise = False
+
+
