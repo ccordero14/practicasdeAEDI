@@ -116,5 +116,5 @@ todosMenores (x, y, z) | f x < g x && f y < g y && f z < g z = True
 
 
 g :: Integer -> Integer
-g x | mod x 2 == 0 = div x 2
+g x | even x = div x 2
     | otherwise = (x * 3) + 1
