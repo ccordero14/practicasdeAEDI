@@ -40,3 +40,9 @@ hayRepetidos :: (Eq t) => [t] -> Bool
 hayRepetidos [] = False
 hayRepetidos (x:xs) | pertenece x xs = True
                     | otherwise = hayRepetidos xs
+
+quitar :: (Eq t) => t -> [t] -> [t]
+quitar _ [] = []
+quitar y (x:xs) | y == x = xs 
+                | otherwise = x : quitar y xs 
+                
