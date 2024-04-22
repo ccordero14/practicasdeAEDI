@@ -45,4 +45,17 @@ quitar :: (Eq t) => t -> [t] -> [t]
 quitar _ [] = []
 quitar y (x:xs) | y == x = xs 
                 | otherwise = x : quitar y xs 
-                
+
+quitar1 :: (Eq t) => t -> [t] -> [t]
+quitar1 _ [] = []
+quitar1 y (x:xs) | y == x = quitar1 y xs 
+                | otherwise = x : quitar1 y xs 
+
+maximo :: [Integer] -> Integer
+maximo [a] = a
+maximo (x:y:xs) | x >= y = maximo (x: xs)
+                | otherwise = maximo (y:xs)
+
+ordenar :: [Integer] -> [Integer]
+ordenar [] = []
+ordenar (x:xs) = ordenar (quitar (maximo (x:xs)) (x:xs)) ++ [maximo (x:xs)]
