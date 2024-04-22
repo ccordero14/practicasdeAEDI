@@ -38,6 +38,5 @@ longitud (x:xs) = 1 + longitud xs
 
 hayRepetidos :: (Eq t) => [t] -> Bool
 hayRepetidos [] = False
-hayRepetidos [x,y] = False
-hayRepetidos (x:xs) |  = True
-                    | otherwise = False
+hayRepetidos (x:xs) | pertenece x xs = True
+                    | otherwise = hayRepetidos xs
