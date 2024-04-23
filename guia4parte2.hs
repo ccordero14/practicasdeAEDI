@@ -1,3 +1,4 @@
+import Control.Arrow (ArrowLoop(loop))
 cantDigitos :: Integer -> Integer
 cantDigitos x | x > 10 = 1 + cantDigitos (div x 10)
               | otherwise = 1
@@ -59,3 +60,20 @@ nEsimoPrimo k = proximoPrimoDesde (nEsimoPrimo (k-1))
 proximoPrimoDesde :: Integer -> Integer
 proximoPrimoDesde n | esPrimo (n-1) = n + 1
                     | otherwise = proximoPrimoDesde (n + 1)
+
+contadorPitagoras :: Integer -> Integer -> Integer -> Integer
+contadorPitagoras m n r | m ^ 2 + n ^ 2 <= r^2 = 1
+                        | otherwise = 0
+
+loopN :: Integer -> Integer -> Integer -> Integer
+loopN m n r | n == 0 = contadorPitagoras m n r 
+            | otherwise = contadorPitagoras m n r + loopN m (n-1) r
+
+pitagoras :: Integer -> Integer -> Integer -> Integer
+pitagoras m n r | m == 0 = loopN m n r
+            | otherwise =  loopN m n r + pitagoras (m-1) n r 
+
+
+
+
+
