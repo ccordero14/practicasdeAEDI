@@ -22,3 +22,33 @@ relacionesValidas [(x,y), (a,b)] | x == a && y == b = False
 relacionesValidas ((x,y):(a,b):ys) | iguales (x,y) ((a,b):ys) = False
                                    | otherwise = relacionesValidas ys
 
+ {--ejercicio2
+  problema personas (relaciones: seqâŸ¨String x StringâŸ©) : seqâŸ¨StringâŸ© {
+  requiere: {relacionesValidas(relaciones)}
+  asegura: {res no tiene elementos repetidos}
+  asegura: {res tiene exactamente los elementos que figuran en alguna tupla de relaciones, en cualquiera de sus posiciones}-}
+
+pertenece :: (Eq t) => t -> [t] -> Bool
+pertenece _ [] = False
+pertenece n (x:xs) | n == x = True
+                   | otherwise = pertenece n xs
+
+listaPersonas :: [(String, String)] -> [String]
+listaPersonas [] = []
+listaPersonas ((x,y):xs) = x : y : listaPersonas xs 
+
+sacarRepetidos :: (Eq t) => [t] -> [t]
+sacarRepetidos [] = []
+sacarRepetidos (x:xs) | pertenece x xs = pasoRecursivo
+                      | otherwise = x : pasoRecursivo
+                      where pasoRecursivo = sacarRepetidos xs
+
+personas :: [(String,String)] -> [String]
+personas [] = []
+personas xs = sacarRepetidos (listaPersonas xs)
+
+                        
+
+
+
+
