@@ -16,3 +16,7 @@ def es_nombre_largo (nombre:str) -> bool:
 def foo(t:int):
     res = 2*t
     return res
+
+def imprimir_verso_cancion ():
+    print("im super shy, super shy\nbut wait a minute while i make you mine, make you mine\nkoreanlmao youre on my mind, all the time\ni wanna tell you but im super shy, super shy")
+
