@@ -139,3 +139,137 @@ def vacacionesOTrabajo(sexo:chr, edad:int)->str:
             res="Te toca trabajar"
     return res
 
+# ejercicio 6:
+
+def del1Al10():
+    numero=1
+    while numero <=10:
+        print (numero)
+        numero += 1
+
+def paresDel10a40():
+    numero=10
+    while numero <= 40:
+        print (numero)
+        numero += 2
+
+def eco10Veces():
+    repeticion=0
+    while repeticion < 10:
+        print ("eco")
+        repeticion += 1
+        
+def cuentaRegresiva(cuenta:int):
+    while cuenta>0:
+        print (cuenta)
+        cuenta -=1
+    return print ("Despegue!")
+
+def viajeEnElTiempo(añodepartida:int, añodellegada:int)->str:
+    print(f"estamos en el año {añodepartida}, viajaremos al año {añodellegada}")
+    while añodepartida>=añodellegada:
+        print (f"viajó un año al pasado, estamos en el año: {añodepartida}")
+        añodepartida -= 1
+    return print ("llegamos!")
+        
+def viajeAristoteles(añodepartida:int)->str:
+    añodellegada=-384
+    print(f"estamos en el año {añodepartida} b.C., viajaremos a conocer a Aristoteles en {añodellegada} a.C")
+    while añodepartida>=añodellegada:
+        print (f"viajó 20 años al pasado, estamos en el año: {añodepartida}")
+        añodepartida -= 20
+    return print (f"llegamos! estamos a {abs(añodepartida+404)} años de Aristoteles")
+
+#ejercicio 7:
+
+def rango1A10():
+    for i in range(1,11, 1):
+        print (i)
+        
+def rango10A40():
+    for i in range(10,41,2):
+        print (i)
+        
+def eco10VecesRango():
+    for i in range (1,11,1):
+        print ("eco")
+        
+def cuentaRegresivaAuto(cuenta:int):
+    for i in range(cuenta,0, -1):
+        print (i)
+    return print ("Despegue!")
+
+def viajeEnElTiempoAuto(añodepartida:int, añodellegada:int)->str:
+    print(f"estamos en el año {añodepartida}, viajaremos al año {añodellegada}")
+    for i in range (añodepartida, (añodellegada-1), -1):
+        print (i)
+    return print ("llegamos!")
+
+def viajeAristotelesAuto(añodepartida:int)->str:
+    añodellegada=-384
+    print(f"estamos en el año {añodepartida} b.C., viajaremos a conocer a Aristoteles en {añodellegada} a.C")
+    for i in range (añodepartida, (añodellegada-1), -20):
+        print (i)
+    return print (f"llegamos! estamos a {abs(i+384)} años de Aristoteles") 
+
+def suma():
+    x=5
+    y=7
+    x=x+y
+    print (x)
+    
+def alCuadrado():
+    x=5
+    y=7
+    z=x+y
+    y=z*2
+    print (z)
+    print (y)
+    
+def dobleHora():
+    x=5
+    y=7
+    x="hora "
+    y=x*2
+    print (y)
+    
+def TorF():
+    x=False
+    res=not(x)
+    return res
+
+def TorFAgain():
+    x=False
+    x=not(x)
+    return x
+
+def noLoSe():
+    x=True
+    y=False
+    res=(x and y)
+    x= (res and x)
+    print (res)
+    print (x)
+    
+def rt(x: int, g: int) -> int:
+    g: int = 0
+    g = g + 1
+    return x + g
+
+def ro(x: int) -> int:
+    global g
+    g = g + 1
+    return x + g
+
+def rt2 (x:int):
+    g=0
+    g = g+1
+    z=x+g
+    return z
+
+def ro2 (x:int):
+    g=0
+    g=g+1
+    z=x+g
+    return z
+    
