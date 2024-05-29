@@ -273,3 +273,37 @@ def ro2 (x:int):
     z=x+g
     return z
     
+# Guia 7:
+
+def pertenece (lista:list[int],numero:int)->bool:
+    res:bool =False
+    for i in range (0,len(lista)):
+        if numero==lista[i]:
+            res =True
+    return res
+
+def edades (edades: list[int]):
+    for i in range (len(edades)):
+        print (edades [i])
+
+def divide_a_todos(lista:list[int], numero:int)->bool:
+    res: bool = False
+    for i in range (0, len(lista), 1):
+        if lista[i]%numero==0:
+            res=True
+
+    return res
+
+def suma_total (lista: list[int])->int:
+    res: int=0
+    for i in range (len(lista)):
+        res=res+lista[i]
+    return res
+    
+def ordenados(seq:list[int])->bool:
+    for i in range(0,len(seq)-1):
+        if (not(seq[i]<seq[i+1])):
+            return False
+    return True
+
+
