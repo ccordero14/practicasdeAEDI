@@ -23,6 +23,7 @@ def imprimir_verso_cancion ():
     print("im super shy, super shy\nbut wait a minute while i make you mine, make you mine\nkoreanlmao youre on my mind, all the time\ni wanna tell you but im super shy, super shy")
 
 import math
+import queue
 
 def raizDe2()->float:
     return round (math.sqrt (2) , 2)
@@ -382,3 +383,28 @@ def fortaleza(contraseña:str)->str:
 
 
 
+def agregar_frase(nombre_archivo:str,frase:str):
+    archivo=open(nombre_archivo,'a')
+    archivo.write(frase)
+    archivo.close()
+
+
+from queue import LifoQueue as Pila
+import random
+
+def generar_nros_al_azar(n:int,desde:int,hasta:int)->Pila:
+    p:Pila = Pila()
+    for i in range(0,n):
+        elemento= (random.randint(desde,hasta))
+        p.put(elemento)
+    #    print(elemento)
+    return p
+
+csosa =  generar_nros_al_azar(5,9,27)
+print(csosa)
+
+def contarLineas(nombrearchivo:str)->int:
+    archivo=open(nombrearchivo,"r", encoding="UTF-8")
+    res:int=len(archivo.readlines())
+    archivo.close()
+    return res
