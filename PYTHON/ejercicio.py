@@ -400,11 +400,104 @@ def generar_nros_al_azar(n:int,desde:int,hasta:int)->Pila:
     #    print(elemento)
     return p
 
-csosa =  generar_nros_al_azar(5,9,27)
-print(csosa)
+#csosa =  generar_nros_al_azar(5,9,27)
+#print(csosa)
 
 def contarLineas(nombrearchivo:str)->int:
     archivo=open(nombrearchivo,"r", encoding="UTF-8")
     res:int=len(archivo.readlines())
     archivo.close()
     return res
+
+def existePalabra(palabra:str, nombrearchivo: str)->bool:
+    archivo=open(nombrearchivo, "r", encoding="UTF-8")
+    for linea in archivo. readlines():
+        if palabra in linea:
+            return True
+    return False
+
+def cantidadApariciones(nombrearchivo: str, palabra: str) -> int:
+    archivo = open(nombrearchivo, "r")
+    contador = 0
+    word = ""
+    for linea in archivo.readlines():
+        for letra in linea:
+            if letra != " " and letra != "\n":
+                word = word + letra
+            else:
+                if word == palabra:
+                    contador += 1
+                else:
+                    word = ""
+    archivo.close()
+    return contador
+
+def empiezaComentario(palabra: str) -> bool:
+    if palabra[0] == "#":
+        return True
+    return False
+
+def filtrarComentarios(listaDePalabras: list) -> list:
+    for palabra in listaDePalabras:
+        if empiezaComentario(palabra):
+            listaDePalabras.remove(palabra)
+    return listaDePalabras
+
+def clonarSinComentarios(nombreArchivo: str):
+    archivo = open(nombreArchivo,"r",encoding="utf8")
+    res = open("sinComentarios.txt","w",encoding="utf8")
+
+    for linea in archivo.readlines():
+        listaDePalabras: list[str] = linea.split(" ") 
+        listaFiltada = filtrarComentarios(listaDePalabras)
+        linea = " ".join(listaFiltada)
+        res.write(linea + '\n')
+
+    archivo.close()
+    res.close()
+
+def cantidadElementos(p:Pila)->int:
+    res:int=0
+    while not (p.empty()):
+        p.get()
+        res+=1
+
+    return res
+
+
+def maximo(p:Pila)->int:
+    lista:list=[]
+    res: int=0
+    while not p.empty():
+        elemento=p.get()
+        lista.append(elemento)
+    for i in range(0, len(lista)):
+        if res < lista[i]:
+            res = lista[i]
+    return res
+
+pilaprueba=Pila()
+pilaprueba.put(1)
+pilaprueba.put(2)
+pilaprueba.put(30)
+pilaprueba.put(89)
+
+   
+prueba=maximo(pilaprueba)
+#print(prueba)
+
+import random
+from queue import Queue as Cola
+
+def armarSecuenciaBingo() -> Cola[int]:
+    c=Cola()
+    lista=list()
+    for i in range(100):
+        lista.append(i)
+    while len(lista)>0:
+        numero= lista.pop(random.randint(0,len(lista)-1))
+        c.put(numero)
+        print(numero)
+    return c
+ 
+bolillero=print(armarSecuenciaBingo())
