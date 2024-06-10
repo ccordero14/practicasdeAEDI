@@ -418,19 +418,54 @@ def existePalabra(palabra:str, nombrearchivo: str)->bool:
 
 def cantidadApariciones(nombrearchivo: str, palabra: str) -> int:
     archivo = open(nombrearchivo, "r")
+    contenidoArchivo=archivo.read()
+    palabrasArchivo=manual_split(contenidoArchivo)
     contador = 0
-    word = ""
-    for linea in archivo.readlines():
-        for letra in linea:
-            if letra != " " and letra != "\n":
-                word = word + letra
-            else:
-                if word == palabra:
-                    contador += 1
-                else:
-                    word = ""
+    
+    for palabraArchivo in palabrasArchivo:
+        if palabra==palabraArchivo:
+            contador+=1    
     archivo.close()
     return contador
+
+
+def splitCacero (testo:str) -> list:
+    lista:list = []
+    palabra:str = ""
+    for caracter in testo:
+        if not (caracter == " " or caracter == "\n"):
+            palabra = palabra + caracter
+        else:
+            if not palabra == "":
+                lista.append(palabra)
+                palabra = ""
+    lista.append(palabra)            
+    return lista
+
+def manual_split(testo:str)->list:
+    lista:list = []
+    palabra:str = ""
+    
+    for caracter in testo:
+        if caracter == " " or caracter == "\n":
+            if palabra:  
+                lista.append(palabra)
+                palabra = ""
+        else:
+            palabra += caracter
+    
+    if palabra:  
+        lista.append(palabra)
+    
+    return lista
+
+
+
+nombreArchivo= "supershy.txt"
+contenido= open(nombreArchivo, "r", encoding="utf8").read()
+
+
+print(manual_split(contenido))
 
 def empiezaComentario(palabra: str) -> bool:
     if palabra[0] == "#":
@@ -484,7 +519,7 @@ pilaprueba.put(89)
 
    
 prueba=maximo(pilaprueba)
-#print(prueba)
+print(prueba)
 
 import random
 from queue import Queue as Cola
@@ -501,3 +536,42 @@ def armarSecuenciaBingo() -> Cola[int]:
     return c
  
 bolillero=print(armarSecuenciaBingo())
+
+from queue import LifoQueue as Pila
+
+historiales: dict = {}
+historiales_aux: dict = {}
+
+
+def visitar_sitio(historiales: dict, usuario: str, sitio: str):
+    if usuario not in historiales:
+        historial = Pila()
+    else:
+        historial = historiales[usuario]
+    historial.put(sitio)
+    historiales[usuario] = historial
+
+
+def navegar_atras(historiales: dict, usuario: str):
+    historial: Pila = historiales[usuario]
+    if not historial.empty():
+        x = historial.get()
+        historiales_aux[usuario] = x
+        return x
+    return None
+
+
+def main():
+    visitar_sitio(historiales, "Usuario1", "google.com")
+    visitar_sitio(historiales, "Usuario1", "facebook.com")
+    print(f"Historial de Usuario1 después de visitar sitios: {list(historiales['Usuario1'].queue)}")
+
+    sitio_atras = navegar_atras(historiales, "Usuario1")
+    print(f"Usuario1 navega atrás y visita: {sitio_atras}")
+    print(f"Historial de Usuario1 después de navegar atrás: {list(historiales['Usuario1'].queue)}")
+
+    visitar_sitio(historiales, "Usuario2", "youtube.com")
+    print(f"Historial de Usuario2 después de visitar sitio: {list(historiales['Usuario2'].queue)}")
+
+probar=main()
+
